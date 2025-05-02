@@ -79,6 +79,9 @@ type WebhookRegistration struct {
 
 	// Until describes the time this subscription expires.
 	Until time.Time `json:"until"`
+
+	// CaduceusQueueName is the name of the AWS SQS queue that receives events from CPE for use in Caduceus.
+	CaduceusQueueName string `json:"caduceus_queue_name,omitempty"`
 }
 
 func (w WebhookRegistration) ToWebhook() Webhook {
