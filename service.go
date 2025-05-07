@@ -142,6 +142,7 @@ func (s *service) Add(ctx context.Context, owner string, iw InternalWebhook) err
 	if err != nil {
 		return fmt.Errorf(errFmt, errFailedWebhookConversion, err)
 	}
+	fmt.Println("This is the item being pushed to argus: ", item)
 	result, err := s.argus.PushItem(ctx, owner, item)
 	if err != nil {
 		return fmt.Errorf(errFmt, errFailedWebhookPush, err)
