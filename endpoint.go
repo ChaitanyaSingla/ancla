@@ -19,6 +19,7 @@ package ancla
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/go-kit/kit/endpoint"
 )
@@ -26,6 +27,7 @@ import (
 func newAddWebhookEndpoint(s Service) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		r := request.(*addWebhookRequest)
+		fmt.Println("This is the request from tr1d1um: ", r)
 		return nil, s.Add(ctx, r.owner, r.internalWebook)
 	}
 }
