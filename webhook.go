@@ -69,6 +69,10 @@ type Webhook struct {
 
 	// CaduceusQueueName is the name of the AWS SQS queue that receives events from CPE for use in Caduceus.
 	CaduceusQueueName string `json:"caduceus_queue_name,omitempty"`
+
+	// SqsMessageAttributes holds custom key–value pairs that will be sent as
+	// message attributes when publishing to the configured AWS SQS queue.
+	SqsMessageAttributes map[string]string `json:"sqs_message_attributes,omitempty"`
 }
 
 // WebhookRegistration is a special struct for unmarshaling a webhook as part of
