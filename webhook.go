@@ -69,6 +69,10 @@ type Webhook struct {
 
 	// CaduceusQueueName is the name of the AWS SQS queue that receives events from CPE for use in Caduceus.
 	CaduceusQueueName string `json:"caduceus_queue_name,omitempty"`
+
+	// SqsMessageAttributes holds custom key–value pairs that will be sent as
+	// message attributes when publishing to the configured AWS SQS queue.
+	SqsMessageAttributes map[string]string `json:"sqs_message_attributes,omitempty"`
 }
 
 // WebhookRegistration is a special struct for unmarshaling a webhook as part of
@@ -99,17 +103,22 @@ type WebhookRegistration struct {
 
 	// CaduceusQueueName is the name of the AWS SQS queue that receives events from CPE for use in Caduceus.
 	CaduceusQueueName string `json:"caduceus_queue_name,omitempty"`
+
+	// SqsMessageAttributes holds custom key–value pairs that will be sent as
+	// message attributes when publishing to the configured AWS SQS queue.
+	SqsMessageAttributes map[string]string `json:"sqs_message_attributes,omitempty"`
 }
 
 func (w WebhookRegistration) ToWebhook() Webhook {
 	return Webhook{
-		Address:           w.Address,
-		Config:            w.Config,
-		FailureURL:        w.FailureURL,
-		Events:            w.Events,
-		Matcher:           w.Matcher,
-		Duration:          time.Duration(w.Duration),
-		Until:             w.Until,
-		CaduceusQueueName: w.CaduceusQueueName,
+		Address:              w.Address,
+		Config:               w.Config,
+		FailureURL:           w.FailureURL,
+		Events:               w.Events,
+		Matcher:              w.Matcher,
+		Duration:             time.Duration(w.Duration),
+		Until:                w.Until,
+		CaduceusQueueName:    w.CaduceusQueueName,
+		SqsMessageAttributes: w.SqsMessageAttributes,
 	}
 }
