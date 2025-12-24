@@ -67,8 +67,11 @@ type Webhook struct {
 	// Until describes the time this subscription expires.
 	Until time.Time `json:"until"`
 
-	// CaduceusQueueName is the name of the AWS SQS queue that receives events from CPE for use in Caduceus.
-	CaduceusQueueName string `json:"caduceus_queue_name,omitempty"`
+	// SqsQueue is the name of the AWS SQS queue that receives events from CPE for use in Caduceus.
+	SqsQueue string `json:"sqs_queue,omitempty"`
+
+	// KafkaTopic is the name of the Kafka topic that receives events from CPE for use in Caduceus.
+	KafkaTopic string `json:"kafka_topic,omitempty"`
 }
 
 // WebhookRegistration is a special struct for unmarshaling a webhook as part of
