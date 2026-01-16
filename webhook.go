@@ -72,6 +72,9 @@ type Webhook struct {
 
 	// KafkaTopic is the name of the Kafka topic that receives events from CPE for use in Caduceus.
 	KafkaTopic string `json:"kafka_topic,omitempty"`
+
+	// KafkaMessageHeaders is a map of Kafka message headers which will be injected the a message is produced to Kafka
+	KafkaMessageHeaders map[string]string `json:"kafka_message_headers,omitempty"`
 }
 
 // WebhookRegistration is a special struct for unmarshaling a webhook as part of
